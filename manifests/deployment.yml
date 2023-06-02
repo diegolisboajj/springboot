@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: diegolisboajjspringbootapp 
+  name: springbootapp 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: diegolisboajjspringbootapp
+      app: springbootapp
   template:
     metadata:
       labels:
-        app: diegolisboajjspringbootapp 
+        app: springbootapp 
     spec:
       containers:
-        - name: diegolisboajjspringbootapp 
-          image: myacrrepo431.azurecr.io/diegolisboajjspringbootapp
+        - name: springbootapp 
+          image: soacheiofertas1.azurecr.io/springbootapp
           ports:
           - containerPort: 80
