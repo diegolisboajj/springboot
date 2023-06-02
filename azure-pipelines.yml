@@ -39,12 +39,3 @@ stages:
         repository: $(imageName)
         tags: |
           $(tag)
-    - task: ECRPushImage@1
-      inputs:
-        awsCredentials: 'my_aws_conn'
-        regionName: 'us-east-1'
-        imageSource: 'imageid'
-        sourceImageId: '$(imageName):$(tag)'
-        repositoryName: '$(repoName)'
-        pushTag: '$(tag)'
-        forceDockerNamingConventions: true
