@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-angular-app
-        image: akdevopscoaching/springbootapp:latest
+        image: diegohamaz/springbootapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
