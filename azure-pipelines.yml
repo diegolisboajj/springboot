@@ -1,7 +1,3 @@
-# Docker
-# Build a Docker image
-# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
-
 trigger:
 - main
 
@@ -21,6 +17,7 @@ stages:
       vmImage: ubuntu-latest
     steps:
     - task: Maven@4
+      displayName: 'Maven pom.xml'
       inputs:
         mavenPomFile: 'pom.xml'
         goals: 'install'
@@ -31,11 +28,23 @@ stages:
         mavenAuthenticateFeed: false
         effectivePomSkip: false
         sonarQubeRunAnalysis: false
-    - task: Docker@2
-      displayName: Build an image
+
+    - task: Docker@0
+      displayName: 'Build an image'
       inputs:
-        command: build
+        azureSubscription: 'Visual Studio Professional Subscription (fcd03eb0-274e-4d90-853f-403957855c74)'
+        azureContainerRegistry: 'soacheiofertas1.azurecr.io'
+        command: 'build'
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         repository: $(imageName)
         tags: |
           $(tag)
+
+    - task: Docker@0
+      displayName: 'Push an image'
+      inputs:
+        azureSubscription: 'Visual Studio Professional Subscription (fcd03eb0-274e-4d90-853f-403957855c74)'
+        azureContainerRegistry: 'soacheiofertas1.azurecr.io'
+        command: 'push'
+        imageName: $(imageName)
+        includeLatestTag: true
