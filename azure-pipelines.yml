@@ -41,12 +41,12 @@ stages:
         azureSubscription: 'Visual Studio Professional Subscription (fcd03eb0-274e-4d90-853f-403957855c74)'
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
-        inlineScript: 'az acr login --name soacheiofertas1 --username soacheiofertas1 --password qP3Xi++h9dab0MNtkcv90PCYVlyKNkHwvZp1mmZwTU+ACRDSoKop'
-      
+        inlineScript: |
+          az acr login --name soacheiofertas1
+
     - task: Docker@0
       displayName: 'Push an image'
       inputs:
         azureSubscription: 'Visual Studio Professional Subscription (fcd03eb0-274e-4d90-853f-403957855c74)'
         azureContainerRegistry: '{"loginServer":"soacheiofertas1.azurecr.io", "id" : "/subscriptions/fcd03eb0-274e-4d90-853f-403957855c74/resourceGroups/resource_main/providers/Microsoft.ContainerRegistry/registries/soacheiofertas1"}'
         action: 'Push an image'
-
