@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-springboot-app
-        image: treinamento1.azurecr.io/diegohamaz/springboot-app:#{Build.BuildId}#
+        image: docker.io/diegolisboajj/springboot-app:#{Build.BuildId}#
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
@@ -33,6 +33,6 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 8085
-  type: LoadBalancer
+  type: LoadBalancergit pul
   selector:
     app: springboot-app
