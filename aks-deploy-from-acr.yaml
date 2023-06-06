@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-springboot-app
-        image: docker.io/diegolisboajj/springboot-app:${{Build.BuildId}}
+        image: docker.io/diegolisboajj/springboot-app:#{Build.BuildId}#
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
