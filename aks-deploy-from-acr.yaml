@@ -33,6 +33,6 @@ spec:
     port: 80
     protocol: TCP
     targetPort: 8085
-  type: LoadBalancergit pul
+  type: LoadBalancer
   selector:
     app: springboot-app
